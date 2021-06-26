@@ -15,6 +15,9 @@ use Barryvdh\DomPDF\Facade as PDF;
 
 class PeopleController extends Controller
 {
+
+    public $coefficient = 0.1315789473684211; // коэффициент
+
     /* Список людей */
     public function index()
     {
@@ -59,7 +62,7 @@ class PeopleController extends Controller
 
     /* Расчет госпошлины */
     public function getStateFee ($debit) {
-      return (int)$debit * 0.1315789473684211;
+      return (int)$debit * $this->coefficient;
     }
 
     /* Импорт в Excel */
