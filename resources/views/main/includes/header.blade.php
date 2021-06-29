@@ -11,11 +11,11 @@
 
       <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
         <li>
-          <a href="{{ route('main.index') }}" class="nav-link px-2 link-dark">Главная</a>
+          <a href="{{ route('main.index') }}" class="nav-link px-2 {{ Request::is('/*') ? 'link-secondary' : 'link-dark' }}">Главная</a>
         </li>
         @auth
         <li>
-          <a href="{{ route('admin.index') }}" class="nav-link px-2 link-dark">Админпанель</a>
+          <a href="{{ route('admin.index') }}" class="nav-link px-2 {{ Request::is('admin/*') ? 'link-secondary' : 'link-dark' }}">Админпанель</a>
         </li>
         @endauth
       </ul>

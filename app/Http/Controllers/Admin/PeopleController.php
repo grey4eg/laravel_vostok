@@ -22,6 +22,13 @@ class PeopleController extends Controller
     public function index()
     {
         $peoples = DB::select('SELECT * FROM `peoples`');
+        if ( !is_null($peoples) ) {
+          foreach ($peoples as $people) {
+            $people->created_at = date('d.m.Y H:i:s', strtotime($people->created_at));
+            $people->updated_at = date('d.m.Y H:i:s', strtotime($people->updated_at));
+          }
+          unset($people);
+        }
         return view('admin.people.index', ['peoples' => $peoples]);
     }
 
@@ -72,7 +79,7 @@ class PeopleController extends Controller
     }
 
     /* Отображение HTML документа по ссылке */
-    public function show($id)
+    public function show ($id)
     {
       $people = DB::select('SELECT * FROM `peoples` WHERE `id` = ?', [ $id ]);
       return view('admin.people.show', ['people' => $people]);

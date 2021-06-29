@@ -25,10 +25,10 @@
                     {{ $people[0]->Lastname }} {{ $people[0]->FirstName }} {{ $people[0]->Secondname }}
                 </div>
                 <div class="col-12 text-center">
-                    Его долг: {{ $people[0]->Debt }} руб.
+                    Его долг: {{ number_format( $people[0]->Debt, 2, '.', ' ' ) }} руб.
                 </div>
                 <div class="col-12 text-center">
-                    Госпошлина: {{ $people[0]->StateFee }} руб.
+                    Госпошлина: {{ number_format( $people[0]->StateFee, 2, '.', ' ' ) }} руб.
                 </div>
             </div>
         @else
